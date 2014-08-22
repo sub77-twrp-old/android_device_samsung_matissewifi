@@ -5,7 +5,7 @@ TTYP=TWRP2871
 TPRO=recovery
 TIMG=.img
 TTAR=.tar
-TPWD=xxx
+TPWD=$AFHPWD
 d=`date +%Y%m%d-%H%M`
 
 LZMA_RAMDISK := $(PRODUCT_OUT)/ramdisk-recovery-lzma.img
@@ -24,5 +24,5 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 	$(hide) mv $(PRODUCT_OUT)/${TPRO}${TIMG} $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TIMG}
 	$(hide) mv $(PRODUCT_OUT)/${TPRO}${TTAR} $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TTAR}
 	@echo -e ${CL_CYN}"Made omnirom recovery image: $@"${CL_RST}
-#	$(hide) curl -T $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TIMG} -u sub77:${PSWD} ftp://uploads.androidfilehost.com --ftp-create-dirs
-#	$(hide) curl -T $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TTAR} -u sub77:${PSWD} ftp://uploads.androidfilehost.com --ftp-create-dirs
+	$(hide) curl -T $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TIMG} -u sub77:${PSWD} ftp://uploads.androidfilehost.com --ftp-create-dirs
+	$(hide) curl -T $(PRODUCT_OUT)/${TTYP}-${TDEV}_${d}${TTAR} -u sub77:${PSWD} ftp://uploads.androidfilehost.com --ftp-create-dirs

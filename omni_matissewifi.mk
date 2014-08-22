@@ -14,7 +14,8 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
-    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/recovery.fstab
+    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/recovery.fstab \
+    $(LOCAL_PATH)/fstab.qcom:recovery/root/fstab.qcom
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -44,3 +45,19 @@ MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
 MR_CONTINUOUS_FB_UPDATE := true
 #MR_DEVICE_HOOKS := $(LOCAL_PATH)/multirom/mr_hooks.c
 #MR_DEVICE_HOOKS_VER := 3
+
+# Wifi
+PRODUCT_PACKAGES += \
+    dhcpcd.conf \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+PRODUCT_PACKAGES += \
+    libcurl \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    libwcnss_qmi \
+    wcnss_service
+
+
