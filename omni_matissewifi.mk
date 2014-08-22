@@ -60,4 +60,8 @@ PRODUCT_PACKAGES += \
     libwcnss_qmi \
     wcnss_service
 
+# LVM
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lvm/lvm:root/sbin/lvm \
+    $(LOCAL_PATH)/lvm/lvm.conf:root/lvm/etc/lvm.conf
 
