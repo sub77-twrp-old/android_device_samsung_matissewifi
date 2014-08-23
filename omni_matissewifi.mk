@@ -60,8 +60,21 @@ PRODUCT_PACKAGES += \
     libwcnss_qmi \
     wcnss_service
 
+# Ramdisk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/configs/init.fs.rc.std:root/init.fs.rc.std \
+    $(LOCAL_PATH)/configs/init.fs.rc.lvm:root/init.fs.rc.lvm \
+    $(LOCAL_PATH)/configs/fstab.qcom.std:root/fstab.qcom.std \
+    $(LOCAL_PATH)/configs/fstab.qcom.lvm:root/fstab.qcom.lvm \
+    $(LOCAL_PATH)/configs/twrp.fstab.lvm:recovery/root/etc/twrp.fstab.lvm \
+    $(LOCAL_PATH)/configs/twrp.fstab.std:recovery/root/etc/twrp.fstab.std
+
 # LVM
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lvm/lvm_init.sh:root/lvm_init.sh \
+    $(LOCAL_PATH)/lvm/lvm_symlinks.sh:root/lvm_symlinks.sh \
+    $(LOCAL_PATH)/lvm/lvm_setprop.sh:root/lvm_setprop.sh \
     $(LOCAL_PATH)/lvm/lvm:root/sbin/lvm \
     $(LOCAL_PATH)/lvm/lvm.conf:root/lvm/etc/lvm.conf
 

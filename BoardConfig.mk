@@ -97,3 +97,10 @@ WLAN_MODULES:
 	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
 
 TARGET_KERNEL_MODULES += WLAN_MODULES
+
+#TODO: Need to determine just how this is used.  There's a slight
+#chance this could cause some small issues on LVM configs
+#but overall, TWRP doesn't use this and the rest of the build system
+#does
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.qcom.std
+
