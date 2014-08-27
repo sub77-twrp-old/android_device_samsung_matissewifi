@@ -104,3 +104,9 @@ TARGET_KERNEL_MODULES += WLAN_MODULES
 #does
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.qcom.std
 
+#Temporary hack to make TWRP support emulated storage
+#On non-emulated configurations it results in a usable
+#but somewhat confusing user interface
+#We need to make TWRP autodetect
+RECOVERY_SDCARD_ON_DATA := true
+
