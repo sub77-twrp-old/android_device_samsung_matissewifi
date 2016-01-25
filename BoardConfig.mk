@@ -38,7 +38,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Kernel Configs
 #TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
-#TARGET_KERNEL_CONFIG := exynos7420-matissewifi_tmo_defconfig
+#TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
 #BOARD_KERNEL_IMAGE_NAME := Image
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := true
 #ARM_EABI_TOOLCHAIN := /builds/omni-5.1/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
