@@ -102,11 +102,11 @@ TARGET_KERNEL_MODULES += WLAN_MODULES
 #chance this could cause some small issues on LVM configs
 #but overall, TWRP doesn't use this and the rest of the build system
 #does
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.qcom.std
+#TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.qcom.std
 
 #Temporary hack to make TWRP support emulated storage
 #On non-emulated configurations it results in a usable
 #but somewhat confusing user interface
 #We need to make TWRP autodetect
-RECOVERY_SDCARD_ON_DATA := true
+#RECOVERY_SDCARD_ON_DATA := true
 
