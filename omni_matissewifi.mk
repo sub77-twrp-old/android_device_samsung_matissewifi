@@ -16,7 +16,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/recovery.fstab
 
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, build/target/product/base.mk)
 
 PRODUCT_NAME := omni_matissewifi
 PRODUCT_DEVICE := matissewifi
