@@ -7,11 +7,11 @@ TARGET_BOARD_PLATFORM := msm8226
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 
 # Flags
-#TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
-#TARGET_USES_ION:= true
+TARGET_USES_ION:= true
 
 # Architecture
 TARGET_ARCH := arm
@@ -29,8 +29,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000 --d
 
 # prebuilt kernel
 TARGET_PREBUILT_KERNEL := device/samsung/matissewifi/kernel
-# else uncomment below to build from sauce
-# TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
+# else uncomment below to build from source
+TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
 # TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
@@ -54,4 +54,23 @@ TW_MAX_BRIGHTNESS := 75
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_EXCLUDE_SUPERSU := true
-#TW_TARGET_USES_QCOM_BSP := true
+TW_TARGET_USES_QCOM_BSP := true
+
+# MULTIROM
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := $(LOCAL_PATH)/multirom/mr_init_devices.c
+MR_DPI := mdpi
+MR_DPI_MUL := 1
+MR_DPI_FONT := 160
+MR_FSTAB := $(LOCAL_PATH)/recovery.fstab
+MR_INFOS := $(LOCAL_PATH)/multirom/mrom_infos
+MR_KEXEC_MEM_MIN := 0x06200000
+MR_DEVICE_VARIANTS := matissewifi matissewifiue matisse3g 
+MR_KEXEC_DTB := true
+MR_PIXEL_FORMAT := "RGBX_8888"
+MR_USE_QCOM_OVERLAY := true
+MR_QCOM_OVERLAY_HEADER := $(LOCAL_PATH)/multirom/mr_qcom_overlay.h
+MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
+MR_CONTINUOUS_FB_UPDATE := true
+MR_DEVICE_HOOKS := $(LOCAL_PATH)/multirom/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 3
