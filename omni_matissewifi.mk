@@ -2,7 +2,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/matissewifi/overlay
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/matissewifi/omni_mkbootimg.mk
+#BOARD_CUSTOM_BOOTIMG_MK := device/samsung/matissewifi/omni_mkbootimg.mk
 
 LOCAL_PATH := device/samsung/matissewifi
 ifeq ($(TARGET_PREBUILT_KERNEL),)

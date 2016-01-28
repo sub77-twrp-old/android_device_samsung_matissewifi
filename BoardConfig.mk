@@ -38,7 +38,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Kernel Configs
 #TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
-TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
+#TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
 #BOARD_KERNEL_IMAGE_NAME := Image
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := true
 #ARM_EABI_TOOLCHAIN := /builds/omni-5.1/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
@@ -52,7 +52,7 @@ TARGET_KERNEL_HEADER_ARCH := arm
 #TIMA_DEFCONFIG :=
 TARGET_PREBUILT_KERNEL := device/samsung/matissewifi/zImage
 
-#BOARD_NEEDS_LZMA_MINIGZIP := true
+BOARD_NEEDS_LZMA_MINIGZIP := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 
