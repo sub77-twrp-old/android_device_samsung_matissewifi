@@ -14,7 +14,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
 # Architecture
 TARGET_ARCH := arm
@@ -33,13 +33,15 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00A7DEA0
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+TARGET_USES_ION:= true
+
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 #TARGET_RECOVERY_INITRC := device/samsung/matissewifi/init.rc
 
 # Kernel Configs
-#TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
-TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
-#BOARD_KERNEL_IMAGE_NAME := Image
+TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
+#TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
+#BOARD_KERNEL_IMAGE_NAME := zImage
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := true
 #ARM_EABI_TOOLCHAIN := /builds/omni-5.1/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 #KERNEL_TOOLCHAIN_PREFIX :=
@@ -51,16 +53,24 @@ TARGET_KERNEL_HEADER_ARCH := arm
 #VARIANT_CONFIG :=
 #TIMA_DEFCONFIG :=
 TARGET_PREBUILT_KERNEL := device/samsung/matissewifi/zImage
+#TARGET_SPECIFIC_HEADER_PATH := device/samsung/matissewifi/include
 
-#BOARD_NEEDS_LZMA_MINIGZIP := true
+BOARD_NEEDS_LZMA_MINIGZIP := true
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TW_NO_USB_STORAGE := false
+TW_HAS_USB_STORAGE := true
 
-# Recovery:Start
+CUSTOM_LUN_FILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
+
+RECOVERY_VARIANT := twrp
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # TWRP specific build flags
 TW_THEME := landscape_mdpi
@@ -72,4 +82,5 @@ TW_MAX_BRIGHTNESS := 75
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_EXCLUDE_SUPERSU := true
-#TW_TARGET_USES_QCOM_BSP := true
+TW_TARGET_USES_QCOM_BSP := true
+#TW_NEW_ION_HEAP := true

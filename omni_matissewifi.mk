@@ -2,7 +2,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/matissewifi/overlay
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/matissewifi/omni_mkbootimg.mk
+#BOARD_CUSTOM_BOOTIMG_MK := device/samsung/matissewifi/omni_mkbootimg.mk
+
+#PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8x26/kernel-headers
+
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/matissewifi/include
+
+PRODUCT_PROPERTY_OVERRIDES += persist.hwc.mdpcomp.enable=true
 
 LOCAL_PATH := device/samsung/matissewifi
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -13,7 +19,7 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
+    $(LOCAL_PATH)/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/recovery.fstab
 
 $(call inherit-product, build/target/product/base.mk)
@@ -26,6 +32,11 @@ PRODUCT_MODEL := matissewifi
 # TWRP
 BOARD_SUPPRESS_EMMC_WIPE := true
 
+# BIONIC
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+
+ifeq ($(RECOVERY_VARIANT),multirom)
 # MULTIROM
 MR_INPUT_TYPE := type_b
 MR_INIT_DEVICES := $(LOCAL_PATH)/multirom/mr_init_devices.c
@@ -44,3 +55,4 @@ MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
 MR_CONTINUOUS_FB_UPDATE := true
 #MR_DEVICE_HOOKS := $(LOCAL_PATH)/multirom/mr_hooks.c
 #MR_DEVICE_HOOKS_VER := 3
+endif

@@ -1,12 +1,12 @@
 LOCAL_PATH := $(call my-dir)
 
-TDEV=SMT530
-TTYP=TWRP2871
-TPRO=recovery
-TIMG=.img
-TTAR=.tar
-TPWD=$GEHEIM
-d=`date +%Y%m%d-%H%M`
+export TDEV=SMT530
+export TTYP=TWRP2872
+export TPRO=recovery
+export TIMG=.img
+export TTAR=.tar
+export TPWD=$GEHEIM
+export d=`date +%Y%m%d-%H%M`
 
 LZMA_RAMDISK := $(PRODUCT_OUT)/ramdisk-recovery-lzma.img
 $(LZMA_RAMDISK): $(recovery_ramdisk)
