@@ -14,36 +14,26 @@
 # limitations under the License.
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
-
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-LOCAL_PATH := device/samsung/matissewifi
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product-if-exists, vendor/samsung/matissewifi/matissewifi-vendor.mk)
+$(call inherit-product-if-exists, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
+    device/samsung/matissewifi/kernel:kernel \
+    device/samsung/matissewifi/recovery/root/sbin/busybox:recovery/root/sbin/busybox \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata \
+        
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc \
+    init.recovery.qcom.rc
 
 PRODUCT_PACKAGES += \
     charger_res_images \
     charger
-
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0
