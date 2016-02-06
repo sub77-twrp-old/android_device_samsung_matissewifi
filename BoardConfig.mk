@@ -5,7 +5,7 @@ TARGET_NO_BOOTLOADER := true
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init_matisse.c
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/matisse/init_matisse.c
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8226
@@ -38,11 +38,11 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 
 
 # prebuilt kernel
-TARGET_PREBUILT_KERNEL := device/samsung/matissewifi/kernel
+TARGET_PREBUILT_KERNEL := device/samsung/matisse/kernel
 # else uncomment below to build from source
 TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
 TARGET_KERNEL_CONFIG := twrp_matissewifi_defconfig
-BOARD_MKBOOTIMG_ARGS += --dt device/samsung/matissewifi/dt.img
+BOARD_MKBOOTIMG_ARGS += --dt device/samsung/matisse/dt.img
 
 # Charging mode
 TARGET_PROVIDES_LIBHEALTHD := true
@@ -65,7 +65,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
-#TW_CUSTOM_THEME := device/samsung/matissewifi/multirom/twres
+#TW_CUSTOM_THEME := device/samsung/matisse/multirom/twres
 TW_THEME := landscape_mdpi
 #TW_INCLUDE_CRYPTO := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -80,25 +80,25 @@ TWRP_INCLUDE_LOGCAT := true
 # MultiROM config
 #TARGET_RECOVERY_IS_MULTIROM := true
 BOARD_MKBOOTIMG_ARGS += --board mrom$(shell date -u +%Y%m%d)-01
-MR_DEVICE_VARIANTS := matissewifi
-MR_DEVICE_VARIANTS += matissewifiue
+MR_DEVICE_VARIANTS := matisse
+MR_DEVICE_VARIANTS += matisseue
 MR_DEVICE_VARIANTS += matisse3g
 MR_DEVICE_SPECIFIC_VERSION := k
 MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
 MR_INPUT_TYPE := type_b
-MR_INIT_DEVICES := device/samsung/matissewifi/multirom/mr_init_devices.c
+MR_INIT_DEVICES := device/samsung/matisse/multirom/mr_init_devices.c
 MR_DPI := mdpi
 MR_DPI_MUL := 1
 MR_DPI_FONT := 160
-MR_FSTAB := device/samsung/matissewifi/recovery.fstab
+MR_FSTAB := device/samsung/matisse/recovery.fstab
 MR_USE_MROM_FSTAB := true
-MR_INFOS := device/samsung/matissewifi/multirom/mrom_infos
+MR_INFOS := device/samsung/matisse/multirom/mrom_infos
 MR_KEXEC_MEM_MIN := 0x06200000
 MR_KEXEC_DTB := true
 MR_PIXEL_FORMAT := "RGBX_8888"
 MR_USE_QCOM_OVERLAY := true
-MR_QCOM_OVERLAY_HEADER := device/samsung/matissewifi/multirom/mr_qcom_overlay.h
+MR_QCOM_OVERLAY_HEADER := device/samsung/matisse/multirom/mr_qcom_overlay.h
 MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
 MR_CONTINUOUS_FB_UPDATE := true
-MR_DEVICE_HOOKS := device/samsung/matissewifi/multirom/mr_hooks.c
+MR_DEVICE_HOOKS := device/samsung/matisse/multirom/mr_hooks.c
 MR_DEVICE_HOOKS_VER := 3

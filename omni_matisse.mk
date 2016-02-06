@@ -17,7 +17,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 
-LOCAL_PATH := device/samsung/matissewifi
+LOCAL_PATH := device/samsung/matisse
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
@@ -37,8 +37,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0
     persist.sys.usb.config=mtp
 
-PRODUCT_DEVICE := matissewifi
+PRODUCT_DEVICE := matisse
 #PRODUCT_MODEL := SM-T5XX
-PRODUCT_NAME := omni_matissewifi
+PRODUCT_NAME := omni_matisse
 PRODUCT_BRAND := SAMSUNG
 PRODUCT_MANUFACTURER := SAMSUNG
