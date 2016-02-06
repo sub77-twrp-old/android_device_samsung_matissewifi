@@ -1,0 +1,32 @@
+From 3f13278ddac5e4739b58b308d395b92560c3c6d6 Mon Sep 17 00:00:00 2001
+From: sub77 <sub77@ymail.com>
+Date: Wed, 3 Feb 2016 21:33:51 +0100
+Subject: [PATCH] TARGET_PROVIDES_LIBHEALTHD
+
+Change-Id: I660002b416e67159939ee3874bc453ff5b44b934
+---
+ healthd/Android.mk | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/healthd/Android.mk b/healthd/Android.mk
+index 1c583a7..4ebcb8e 100644
+--- a/healthd/Android.mk
++++ b/healthd/Android.mk
+@@ -4,11 +4,14 @@ ifneq ($(BUILD_TINY_ANDROID),true)
+ 
+ LOCAL_PATH := $(call my-dir)
+ 
++
++ifneq ($(TARGET_PROVIDES_LIBHEALTHD),true)
+ include $(CLEAR_VARS)
+ LOCAL_SRC_FILES := healthd_board_default.cpp
+ LOCAL_MODULE := libhealthd.default
+ LOCAL_CFLAGS := -Werror
+ include $(BUILD_STATIC_LIBRARY)
++endif
+ 
+ include $(CLEAR_VARS)
+ 
+-- 
+1.9.1
+

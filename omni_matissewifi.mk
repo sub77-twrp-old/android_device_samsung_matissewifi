@@ -14,16 +14,7 @@
 # limitations under the License.
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
-
-# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
-# Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
 LOCAL_PATH := device/samsung/matissewifi
@@ -37,20 +28,17 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
-
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    charger
-
-PRODUCT_COPY_FILES += \
     bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
+
+# Charger
+PRODUCT_PACKAGES += charger charger_res_images
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0
     persist.sys.usb.config=mtp
 
-PRODUCT_NAME := omni_matissewifi
 PRODUCT_DEVICE := matissewifi
+#PRODUCT_MODEL := SM-T5XX
+PRODUCT_NAME := omni_matissewifi
 PRODUCT_BRAND := SAMSUNG
-PRODUCT_MODEL := SM-T530
 PRODUCT_MANUFACTURER := SAMSUNG
